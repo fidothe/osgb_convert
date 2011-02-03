@@ -1,0 +1,44 @@
+Some UK Ordnance Survey coordinate conversions in pure Ruby.
+
+WGS84 lat/lons -> OSGB36 lat/lons-> OS Eastings & Northings 
+
+A tidied-into-a-module-and-gem tweak of Harry Wood's port of Chris Veness' 
+http://www.movable-type.co.uk/scripts/latlong-convert-coords.html
+
+
+Originally ported to Ruby by Harry Wood:
+http://www.harrywood.co.uk/blog/2010/06/29/ruby-code-for-converting-to-uk-ordnance-survey-coordinate-systems-from-wgs84/
+
+(c) Chris Veness 2005-2010, (c) Harry Wood 2010-2011
+Teeny portions (c) Matt Patterson 2011
+
+Released under an LGPL license
+http://www.fsf.org/licensing/licenses/lgpl.html
+
+
+Examples:
+
+WGS84 lat/lon:
+
+lon = -0.10322
+lat = 51.52237
+height = 0
+
+wgs84_point = OsgbConvert::WGS84.new(lat, lon, height)
+
+
+osgb36_point = wgs84_point.osgb36
+
+osUKgridPoint = OsgbConvert::OSGrid.from_osgb36(osgb36_point)
+# alternatively
+osUKgridPoint = OsgbConvert::OSGrid.from_wgs84(wgs84_point)
+easting  = osUKgridPoint.easting
+northing = osUKgridPoint.northing
+
+gridrefLetters = osUKgridPoint.gridref(8) # 8 is also the default so osUKgridPoint.gridref would work just as well
+
+puts "wgs84 lat: #{wgs84_point.lat}, wgs84 lon: #{wgs84_point.long}"
+puts "http://www.openstreetmap.org/?mlat=#{wgs84_point.lat}&mlon=#{wgs84_point.long}&zoom=16"
+puts "osgb36 lat: #{osgb36_point.lat}, osgb36 lon: #{osgb36_point.long}"
+puts "easting: #{osUKgridPoint.easting}, northing: #{osUKgridPoint.northing}. As a grid ref: #{osUKgridPoint.gridref}"
+puts "http://streetmap.co.uk/grid/#{osUKgridPoint.easting}_#{osUKgridPoint.northing}_106"
