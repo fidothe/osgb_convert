@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Matt Patterson"]
   s.email       = ["matt@reprocessed.org"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/fidothe/osgb_convert"
   s.summary     = %q{Geo coordinate transformation between WGS84 (GPS) and OSGB36 (UK Ordnance Survey mapping)}
   s.description = %q{Provides a simple interface to transform Geographic coordinates between WGS84 (GPS) and OSGB36 (UK Ordnance Survey mapping)}
 
