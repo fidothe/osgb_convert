@@ -35,10 +35,10 @@ osUKgridPoint = OsgbConvert::OSGrid.from_wgs84(wgs84_point)
 easting  = osUKgridPoint.easting
 northing = osUKgridPoint.northing
 
-gridrefLetters = osUKgridPoint.gridref(8) # 8 is also the default so osUKgridPoint.gridref would work just as well
+gridrefLetters = osUKgridPoint.grid_ref(8) # 8 is also the default so osUKgridPoint.grid_ref would work just as well
 
 puts "wgs84 lat: #{wgs84_point.lat}, wgs84 lon: #{wgs84_point.long}"
 puts "http://www.openstreetmap.org/?mlat=#{wgs84_point.lat}&mlon=#{wgs84_point.long}&zoom=16"
 puts "osgb36 lat: #{osgb36_point.lat}, osgb36 lon: #{osgb36_point.long}"
-puts "easting: #{osUKgridPoint.easting}, northing: #{osUKgridPoint.northing}. As a grid ref: #{osUKgridPoint.gridref}"
+puts "easting: #{osUKgridPoint.easting}, northing: #{osUKgridPoint.northing}. As a grid ref: #{osUKgridPoint.grid_ref}"
 puts "http://streetmap.co.uk/grid/#{osUKgridPoint.easting}_#{osUKgridPoint.northing}_106"
